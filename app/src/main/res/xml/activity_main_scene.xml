@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+       <KeyFrameSet>
+           <KeyAttribute
+               motion:motionTarget="@+id/cardDetailsView"
+               motion:framePosition="85"
+               android:alpha="0" />
+       </KeyFrameSet>
+        <OnSwipe motion:touchAnchorId="@+id/secondConstraintLayout" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/cardDetailsView"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:visibility="visible"
+            motion:layout_constraintTop_toBottomOf="@id/myTabLayout"
+            android:layout_marginStart="15dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/myViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            motion:layout_constraintBottom_toTopOf="@+id/secondConstraintLayout"
+            motion:layout_constraintTop_toBottomOf="@id/myTabLayout"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:visibility="visible"
+            android:alpha="1" />
+        <Constraint
+            android:id="@+id/secondConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/myViewPager"
+            motion:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/cardDetailsView"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:visibility="visible"
+            motion:layout_constraintTop_toBottomOf="@id/myTabLayout"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:alpha="1"
+            motion:layout_constraintEnd_toEndOf="parent" />
+        <Constraint
+            android:id="@+id/myViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            motion:layout_constraintBottom_toTopOf="@+id/secondConstraintLayout"
+            motion:layout_constraintTop_toBottomOf="@id/myTabLayout"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:visibility="visible"
+            android:alpha="0"
+            android:scaleY="0.3"
+            android:scaleX="0.3" />
+        <Constraint
+            android:id="@+id/secondConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/cardDetailsView"
+            motion:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+</MotionScene>
